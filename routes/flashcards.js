@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
     const flashcards = [{
         title: 'Capitals of Europe',
         description: 'Revision for capitals of europe', 
-        dateCreated: 'not yet implemented',
-        dateLastUpdated: 'not yet implemented',
+        dateCreated: new Date(),
+        dateLastUpdated: new Date(),
         public: true,
         flashcards: [
             {
