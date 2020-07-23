@@ -1,8 +1,7 @@
-var express = require('express');
+import express from 'express';
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+const flashcardsIndex = router.get('/', function(req: any, res: any, next: any) {
   
   // TODO hardcoded data 
     const flashcards = [{
@@ -234,4 +233,4 @@ router.get('/', function(req, res, next) {
     res.send(flashcards);
 });
 
-module.exports = router;
+export default { flashcardsIndex };
