@@ -1,14 +1,25 @@
-import { User }  from '../model/user';
+import { User } from "../schemas/user";
 
-export const getUsersData = async () => {
-    try {   
-        // TODO hardcoded data 
-        const users = [new User(1, 'Tom', 'Franklin', 'Tom Franklin', new Date(), 'somemadeupEmail@tomfranklinnn.com', 'maybe add this', 'maybe add this'),
-        new User(2, 'Billy', 'McBillyFace', 'Billy McBillyFace', new Date(), 'somemadeupEmail@tomfranklinnn.com', 'maybe add this', 'maybe add this')];
+export module usersController {
+    export const getUsersData = async () => {
+        try {   
 
-        return users;
-    } catch (error) {
+            return null;
+        } catch (error) {
+                console.log(error);
+            return false;
+        } 
+    };
+
+    export const saveUser = async (userData: any) => {
+        try {
+            const user = new User(userData);
+            user.save();
+
+            return true;
+        } catch (error) {
             console.log(error);
-        return false;
-    } 
-};
+            return false;
+        }
+    }
+}

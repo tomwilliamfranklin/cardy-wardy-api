@@ -8,7 +8,15 @@ usersRoutes.get('/', async function(req: any, res: any, next: any) {
 });       
 
 usersRoutes.post('/user', async function(req: any, res: any, next: any) {
-   res.send(await usersRepository.getUsers());
+   console.log(req.body)
+   const response = await usersRepository.saveUser(req.body);
+   
+   if(response)
+      res.send({type: 'POST', createdUser: req.body.id})
+
+   
+
+   res.send();
 });    
 
 usersRoutes.put('/user/:id', async function(req: any, res: any, next: any) {
