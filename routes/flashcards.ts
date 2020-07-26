@@ -1,9 +1,9 @@
 import express from 'express';
 import { flashcardsRepository } from '../repositories/flashcardsRepository';
-var router = express.Router();
+var flashcardsRoutes = express.Router();
 
-const flashcardsIndex = router.get('/', async function(req: any, res: any, next: any) {
+flashcardsRoutes.get('/', async function(req: any, res: any, next: any) {
     res.send(await flashcardsRepository.getFlashcards());
 });
 
-export default { flashcardsIndex };
+export default flashcardsRoutes;

@@ -1,8 +1,8 @@
 import express from 'express';
-var router = express.Router();
+var indexRoutes = express.Router();
 
-const indexRouter = router.get('/', function(req: any, res: any, next: any) {
+indexRoutes.get('/', function(req: any, res: any, next: any) {
   res.send('default address');
 });
 
-export default { indexRouter };
+export default  indexRoutes;
