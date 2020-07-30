@@ -3,8 +3,9 @@ import { User } from "../schemas/user";
 export module usersController {
     export const getUsersData = async () => {
         try {   
-
-            return null;
+           return await User.find({}).then((users) => {
+                return users;
+            });
         } catch (error) {
                 console.log(error);
             return false;
@@ -14,9 +15,9 @@ export module usersController {
     export const saveUser = async (userData: any) => {
         try {
             const user = new User(userData);
-            user.save();
-
-            return true;
+            user.save().then((user) => {
+                return user;
+            });
         } catch (error) {
             console.log(error);
             return false;

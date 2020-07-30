@@ -1,19 +1,42 @@
-import { Flashcard }  from '../model/flashcard';
-import { FlashcardDeck } from '../model/flashcard-deck';
-import { User } from '../model/user';
 
-export const getFlashcardsData = async () => {
-    try {   
-        // TODO hardcoded data 
-        const flashcards = [
-            new FlashcardDeck('Types of Keyboards', 'something', new Date(), new Date(), true, new User(1, 'Tom', 'Franklin', 'Tom Franklin', new Date(), 'somemadeupEmail@tomfranklinnn.com', 'maybe add this', 'maybe add this'),
-                 [new Flashcard('some keyboard question', 'congrats', false), new Flashcard('second question', 'hello', false)]),
-            new FlashcardDeck('Types of Trees', 'something', new Date(), new Date(), true, new User(1, 'Tom', 'Franklin', 'Tom Franklin', new Date(), 'somemadeupEmail@tomfranklinnn.com', 'maybe add this', 'maybe add this'),
-                 [new Flashcard('some tree question', 'congrats', false), new Flashcard('second question', 'hello', false)]),
-        ];
-        return flashcards;
-    } catch (error) {
+
+import { FlashcardDeck, IFlashcardDeck } from '../schemas/flashcardDeck';
+import { Flashcard } from '../schemas/flashcard';
+export module flashcardController {
+    export const getFlashcardsData = async () => {
+        try {   
+            // TODO hardcoded data 
+             return await FlashcardDeck.find({}).then((flashcardDecks) => {
+                 console.log(flashcardDecks);
+                return flashcardDecks;
+            });
+            
+        } catch (error) {
+                console.log(error);
+            return false;
+        } 
+    };
+
+
+    export const saveFlashcardData = async () => {
+        try {
+
+        } catch (error) {
             console.log(error);
-        return false;
-    } 
-};
+            return false;
+        }
+    }
+
+
+    export const saveFlashcardDeckData = async (deck: IFlashcardDeck) => {
+        try {
+            const newDeck = new FlashcardDeck(deck);
+            return await newDeck.save().then((data) => {
+                return data;
+            });
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+}

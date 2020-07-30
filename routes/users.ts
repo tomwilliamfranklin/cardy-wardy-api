@@ -8,15 +8,12 @@ usersRoutes.get('/', async function(req: any, res: any, next: any) {
 });       
 
 usersRoutes.post('/user', async function(req: any, res: any, next: any) {
-   console.log(req.body)
    const response = await usersRepository.saveUser(req.body);
    
    if(response)
-      res.send({type: 'POST', createdUser: req.body.id})
-
-   
-
-   res.send();
+      res.send({type: 'POST', error: false, responseMessage: 'Successfully saved User.', createdUser: req.body.id});
+   else
+      res.send({type: 'POST', error: true, responseMessage: 'Error creating User. Please try again later.'});
 });    
 
 usersRoutes.put('/user/:id', async function(req: any, res: any, next: any) {
