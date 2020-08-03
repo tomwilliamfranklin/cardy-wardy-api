@@ -1,13 +1,15 @@
 import express from 'express';
 import cors from 'cors';
-require('dotenv').config()
- // ? ROUTES
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
+// ? importin' the routes
+import authRoutes from './routes/auth';
 import indexRoutes from './routes/index';
 import flashcardRoutes from './routes/flashcards';
 import usersRoutes from './routes/users';
-import mongoose from 'mongoose';
 
+dotenv.config();
 
 const app = express();
 
@@ -17,6 +19,7 @@ app.use(cors());
 
 //Routes
 app.use('/', indexRoutes);
+app.use('/auth', authRoutes);
 app.use('/flashcards', flashcardRoutes);
 app.use('/users', usersRoutes);
 
@@ -24,13 +27,14 @@ app.use('/users', usersRoutes);
 mongoose.connect(
     process.env.DB_HOST ? process.env.DB_HOST : '', 
 { useNewUrlParser: true,  useUnifiedTopology: true }, () => {
+    // Successfully connected to the database!! Yeehaw
     console.log('Connected to MongoDB server successfully.');
 });
 
 // overwriting mongooses promise to globals promise. 
 mongoose.Promise = global.Promise;
 
-// PORT
+// I'v been to the port 3000..
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on port ${port}...`));
 

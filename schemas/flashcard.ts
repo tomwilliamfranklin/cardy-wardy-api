@@ -5,7 +5,7 @@ export interface IFlashcard extends Document {
     back: string;
     flipped: boolean;
 }
-
+ // ! This is currently not being used. Kept just in case I change my mind.
 const flashcardSchema = new Schema({
     front: {
         type: String,

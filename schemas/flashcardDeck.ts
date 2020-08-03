@@ -36,10 +36,7 @@ const flashcardDeckSchema = new Schema({
         type: Boolean,
         required: [true, 'first name field is required.'],
     },
-    author: {
-        type: Number,
-        required: [true, 'first name field is required.'],
-    },
+    author: [{ type: Schema.Types.ObjectId, ref: 'user'}],
     flashcards: [{
         front: String,
         back: String,

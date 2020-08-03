@@ -32,6 +32,7 @@ export module flashcardController {
         try {
             const newDeck = new FlashcardDeck(deck);
             return await newDeck.save().then((data) => {
+                console.log(data.errors[0])
                 return data;
             });
         } catch (error) {
