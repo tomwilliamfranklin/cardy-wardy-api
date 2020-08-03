@@ -22,4 +22,15 @@ export module authController {
             return false;
         } 
     };
+
+    export const postLogin = async (request: any) => {
+        try {
+
+        } catch (error) {
+
+            
+        }
+
+
+    }
 }
