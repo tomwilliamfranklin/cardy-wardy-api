@@ -22,14 +22,4 @@ export module authController {
             return false;
         } 
     };
-
-    export const postLogin = async (request: any) => {
-        try {   
-
-            return "hello world";
-        } catch (error) {
-                console.log(error);
-            return false;
-        } 
-    };
 }
