@@ -3,9 +3,8 @@ import { usersController } from '../controllers/userController'
 export module usersRepository {
     export const getUsers = async () => {
         try {   
-
             let i = await usersController.getUsersData();
-            console.log(i);
+
             return i;
         } catch (error) {
                 console.log(error);

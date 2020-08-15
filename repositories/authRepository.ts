@@ -68,14 +68,12 @@ export module authRepository {
             if(!tokenSecret)
                 throw 'Token Secret was not provided in env variables.';
 
-            const token = jwt.sign({_id: user._id}, tokenSecret);
+            const token = jwt.sign({_id: user._id}, tokenSecret, { expiresIn: '7d' });
 
-            res.header('auth-token', token);
-
-                return 'Logged in';
+            return {loggedIn: true, 'token': token};
         } catch (error) {
                 console.log(error);
-            return false;
+            return {loggedIn: false, 'auth-token': null, errorCode: error};
         }
     };
 }

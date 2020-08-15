@@ -14,7 +14,6 @@ authRoutes.post('/register', async function(req: any, res: any, next: any) {
 
 authRoutes.post('/login', async function(req: any, res: any, next: any) {
     const response = await authRepository.postLogin(req, res);
-    
     if(response)
         res.send(response);
 });

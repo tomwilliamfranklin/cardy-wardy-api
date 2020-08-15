@@ -5,9 +5,8 @@ import { Flashcard } from '../schemas/flashcard';
 export module flashcardController {
     export const getFlashcardsData = async () => {
         try {   
-            // TODO hardcoded data 
              return await FlashcardDeck.find({}).then((flashcardDecks) => {
-                 console.log(flashcardDecks);
+
                 return flashcardDecks;
             });
             
@@ -32,7 +31,6 @@ export module flashcardController {
         try {
             const newDeck = new FlashcardDeck(deck);
             return await newDeck.save().then((data) => {
-                console.log(data.errors[0])
                 return data;
             });
         } catch (error) {
